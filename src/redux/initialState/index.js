@@ -3,4 +3,9 @@ export default {
   loading: false,
   userDetails: {},
   error: {},
+  tracks: [],
+  artists: [],
+  analysis: {},
+  recommendation: {},
+  genre: [],
 };
