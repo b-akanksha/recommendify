@@ -28,6 +28,10 @@ function App() {
       dispatch(getUserDetailsThunk());
     }
 
+    if (token) {
+      dispatch(getUserDetailsThunk());
+    }
+
     setToken(token);
   }, [dispatch]);
 

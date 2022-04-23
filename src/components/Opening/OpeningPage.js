@@ -10,7 +10,7 @@ const OpeningPage = ({ darkMode }) => {
         <MusicBox
           icon={start}
           title="Recommendify"
-          subTitle="Where words fail, music wins."
+          subTitle=""
           darkMode={darkMode}
           type="not-load"
         />
