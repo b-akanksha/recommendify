@@ -6,6 +6,7 @@ export const actionTypes = {
   REQUEST_ANALYSIS_SUCCESSFUL: "REQUEST_ANALYSIS_SUCCESSFUL",
   REQUEST_RECOMMENDATION_SUCCESSFUL: "REQUEST_RECOMMENDATION_SUCCESSFUL",
   REQUEST_GENRE_SUCCESSFUL: "REQUEST_GENRE_SUCCESSFUL",
+  TOGGLE_THEME: "TOGGLE_THEME",
 };
 
 export const requestData = () => ({
@@ -41,3 +42,5 @@ export const requestGenreSuccessful = (payload) => ({
   type: actionTypes.REQUEST_GENRE_SUCCESSFUL,
   payload,
 });
+
+export const toggleTheme = () => ({ type: actionTypes.TOGGLE_THEME });

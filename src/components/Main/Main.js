@@ -3,41 +3,41 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Dashboard from "../Dashboard/Dashboard";
-const Main = ({ setToken }) => {
-  const { loading, error, userDetails, recommendation } = useSelector(
-    (state) => state.user
-  );
-
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  };
+import MusicBox from "../MusicBox/MusicBox";
+const Main = ({ setToken, darkMode }) => {
+  const { loading, error, recommendation } = useSelector((state) => state.user);
 
   if (loading) {
     return (
-      <center>
-        <img src="./assets/load.gif" alt="load" />
-        <p>Loading..</p>
-      </center>
+      <div className="flex-container">
+        <MusicBox
+          icon="./assets/load.gif"
+          title="Loading"
+          subTitle="Please wait, while we fetch the data"
+          darkMode={darkMode}
+          type="load"
+        />
+      </div>
     );
   }
   if (!loading && error.message) {
     return (
-      <center>
-        <img src="./assets/error.gif" alt="load" />
-        <p>{error.message}</p>
-      </center>
+      <div className="flex-container">
+        <MusicBox
+          icon="./assets/error.gif"
+          title="Error"
+          subTitle={error.message || "Something went wrong"}
+          darkMode={darkMode}
+          type="load"
+        />
+      </div>
     );
   }
   return (
     <>
-      {recommendation && recommendation.length && <Dashboard />}
-      <p>
-        {userDetails.display_name}
-        <button className="App-link" onClick={logout}>
-          Logout
-        </button>
-      </p>
+      {recommendation && recommendation.length && (
+        <Dashboard setToken={(e) => setToken(e)} />
+      )}
     </>
   );
 };

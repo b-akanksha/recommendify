@@ -1,13 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getUserDetailsThunk } from "./redux/thunks";
-import { scopes } from "./util/scopes";
-import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/Main/Main";
+import OpeningPage from "./components/Opening/OpeningPage";
+import { FormControlLabel, Switch } from "@mui/material";
+import { toggleTheme } from "./redux/actions";
 
 function App() {
   const [token, setToken] = React.useState("");
+  const { darkMode } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -29,42 +31,36 @@ function App() {
     setToken(token);
   }, [dispatch]);
 
+  const handleChange = () => dispatch(toggleTheme());
+
   return (
-    <div className="App">
-      <header>
-        <h1>Recommendify</h1>
-      </header>
+    <div className={`App ${darkMode && "App-Dark"}`}>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={darkMode}
+            onChange={handleChange}
+            inputProps={{ "aria-label": "controlled" }}
+          />
+        }
+        label="Dark Mode"
+      />
       <main>
         {!token ? (
-          <>
-            <h2 className="styled-text">
-              Hey! Do you want to listen to new music based on your mood? Do you
-              want to pick something especially danceable or only instrumental?
-              This tool is for you. <div>Enjoy!</div>
-            </h2>
-
-            <a
-              className="App-link"
-              href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${
-                process.env.REACT_APP_CLIENT_ID
-              }&redirect_uri=${
-                process.env.NODE_ENV === "development"
-                  ? process.env.REACT_APP_LOCAL_REDIRECT_URI
-                  : process.env.REACT_APP_PROD_REDIRECT_URI
-              }&response_type=${
-                process.env.REACT_APP_RESPONSE_TYPE
-              }&scope=${scopes.join("%20")}&show_dialog=true`}
-            >
-              Login to Spotify
-            </a>
-          </>
+          <OpeningPage darkMode={darkMode} />
         ) : (
           <>
-            <Main setToken={(e) => setToken(e)} />
+            <Main setToken={(e) => setToken(e)} darkMode={darkMode} />
           </>
         )}
       </main>
-      <footer>Made by Akanksha. Powered by Spotify API</footer>
+      <footer>
+        <p>
+          <i>
+            Made by <b>Akanksha</b>. Powered by <b>Spotify API</b>
+          </i>
+        </p>
+      </footer>
     </div>
   );
 }

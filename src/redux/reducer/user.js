@@ -9,10 +9,13 @@ const {
   REQUEST_ANALYSIS_SUCCESSFUL,
   REQUEST_RECOMMENDATION_SUCCESSFUL,
   REQUEST_GENRE_SUCCESSFUL,
+  TOGGLE_THEME,
 } = actionTypes;
 
 export const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case TOGGLE_THEME:
+      return { ...state, darkMode: !state.darkMode };
     case REQUEST_DATA:
       return { ...state, loading: true };
     case REQUEST_USER_DATA_SUCCESSFUL:
@@ -27,57 +30,70 @@ export const userReducer = (state = initialState, { type, payload }) => {
       };
     case REQUEST_ANALYSIS_SUCCESSFUL:
       const length = payload.audio_features.length;
-      const acousticness =
+      const acousticness = (
         payload.audio_features
           .map((item) => item.acousticness)
-          .reduce((p, c) => p + c) / length;
-      const danceability =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const danceability = (
         payload.audio_features
           .map((item) => item.danceability)
-          .reduce((p, c) => p + c) / length;
-      const energy =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const energy = (
         payload.audio_features
           .map((item) => item.energy)
-          .reduce((p, c) => p + c) / length;
-      const key =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const key = (
         payload.audio_features.map((item) => item.key).reduce((p, c) => p + c) /
-        length;
-      const loudness =
+        length
+      ).toFixed(2);
+      const loudness = (
         payload.audio_features
           .map((item) => item.loudness)
-          .reduce((p, c) => p + c) / length;
-      const mode =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const mode = (
         payload.audio_features
           .map((item) => item.mode)
-          .reduce((p, c) => p + c) / length;
-      const speechiness =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const speechiness = (
         payload.audio_features
           .map((item) => item.speechiness)
-          .reduce((p, c) => p + c) / length;
-      const instrumentalness =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const instrumentalness = (
         payload.audio_features
           .map((item) => item.instrumentalness)
-          .reduce((p, c) => p + c) / length;
-      const liveness =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const liveness = (
         payload.audio_features
           .map((item) => item.liveness)
-          .reduce((p, c) => p + c) / length;
-      const valence =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const valence = (
         payload.audio_features
           .map((item) => item.valence)
-          .reduce((p, c) => p + c) / length;
-      const tempo =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const tempo = (
         payload.audio_features
           .map((item) => item.tempo)
-          .reduce((p, c) => p + c) / length;
-      const duration_ms =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const duration_ms = (
         payload.audio_features
           .map((item) => item.duration_ms)
-          .reduce((p, c) => p + c) / length;
-      const time_signature =
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
+      const time_signature = (
         payload.audio_features
           .map((item) => item.time_signature)
-          .reduce((p, c) => p + c) / length;
+          .reduce((p, c) => p + c) / length
+      ).toFixed(2);
       return {
         ...state,
         loading: false,

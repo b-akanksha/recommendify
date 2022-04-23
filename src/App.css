@@ -1,38 +1,175 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #c2bebc;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  color: #07070a;
 }
 
-.App-link {
-  color: #61dafb;
+.App-Dark {
+  background-color: #07070a;
+  color: #c2bebc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.styled-tagline {
+  margin: 16px;
+  font-style: italic;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  flex: 50%;
+}
+
+.start-icon {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.styled-h {
+  line-height: 0;
+  text-align: left;
+}
+
+.slider.css-53tbrc-MuiSlider-root {
+  color: #07070a;
+}
+
+.slider-dark.css-53tbrc-MuiSlider-root {
+  color: #c2bebc;
+}
+
+.start-div {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.load-div {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.start-div-text {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.icons-div {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon.css-i4bv87-MuiSvgIcon-root {
+  width: 40px;
+  height: 40px;
+}
+
+.button {
+  font-size: 16px;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 50px;
+  background-color: #07070a;
+  color: #c2bebc;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.button-dark {
+  background-color: #c2bebc;
+  color: #07070a;
+}
+
+.button:active,
+.button:hover,
+.button:focus {
+  border: 1px solid #07070a;
+  background-color: #c2bebc;
+  color: #07070a;
+}
+
+.button-dark:active,
+.button-dark:hover,
+.button-dark:focus {
+  border: 1px solid #c2bebc;
+  background-color: #07070a;
+  color: #c2bebc;
+}
+
+.flex-col-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 16px;
+}
+
+.flex-iframe-container {
+  flex: 30%;
+  padding: 16px;
+}
+
+fieldset {
+  border-width: 5px;
+}
+
+.flex-metrics-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 8px;
+}
+
+.flex-metrics-container {
+  width: 250px;
+  flex: 30%;
+}
+
+progress .MuiLinearProgress-colorPrimary {
+  background-color: #07070a !important;
+}
+
+progress .MuiLinearProgress-barColorPrimary {
+  background-color: #c2bebc !important;
+}
+
+.flex-1 {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  .start-div {
+    margin: 0 auto;
+    width: 50%;
+  }
+  .start-div-text {
+    margin: 0 auto;
+    width: 80%;
+  }
+  .icons-div {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .mobile-view-rec {
+    height: 410px;
+    overflow: auto;
   }
 }

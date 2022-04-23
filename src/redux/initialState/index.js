@@ -8,4 +8,5 @@ export default {
   analysis: {},
   recommendation: {},
   genre: [],
+  darkMode: false,
 };
